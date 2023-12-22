@@ -1,0 +1,75 @@
+.df{
+    /* height: 200px;
+    width: 200px; */
+}
+.glowOnHover{
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #202020;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+.glowOnHover:before{
+    content: "";
+    background: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+.glowOnHover:active{
+    color: #202020;
+}
+.glowOnHover:active::after{
+    background: transparent;
+}
+.glowOnHover:hover:before{
+    opacity: 1;
+}
+.glowOnHover:after{
+    content: "";
+    background: #202020;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+@keyframes glowing{
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 400% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+/* @media only screen and (min-width: 600px) {
+    .df{
+        height: 60px;
+        width: 60px;
+    }
+} */
+@media only screen and (max-width: 768px) {
+    .glowOnHover{
+        width: 100px;
+    height: 50px;
+    }
+  }
