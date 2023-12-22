@@ -52,7 +52,7 @@ export const myCreatedRoutes= createBrowserRouter([
             {
                 path:'taskEdit/:email/:id',
                 element: <TaskEdit></TaskEdit>,
-                loader: ({ params }) => fetch(`http://localhost:5000/tasks/email/${params.id}`)
+                loader: ({ params }) => fetch(`https://task-management-webserver.vercel.app/tasks/email/${params.id}`)
             },
         ]
     }
