@@ -6,6 +6,8 @@ import axios from "axios";
 import { ImSpinner9 } from "react-icons/im";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 const image_hosting_key= import.meta.env.VITE_IMAGE_API_KEY;
 const image_hosting_api= `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
@@ -15,6 +17,7 @@ const Register = () => {
     const highlightText = {
         background: 'linear-gradient(to bottom, transparent 50%, #EA580C 50%)'
     }
+    const axiosSecure = useAxiosSecure();
     const handleImageText = image => {
         setUploadButton(image.name);
     }
@@ -55,7 +58,23 @@ const Register = () => {
                 console.log(res.user);
                 updateUserProfile(name, data.data.display_url)
                 .then(() => {
-                    
+                    const userInfo = {
+                        name: name,
+                        email: email,
+                        imageURL: data.data.display_url
+                    }
+                    axiosSecure.post('/users', userInfo)
+                        .then(res => {
+                            if (res.data.insertedId) {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "User Created Successfully",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                setLoading(false);
+                            }
+                        })
                     navigate('/');
                 })
             })

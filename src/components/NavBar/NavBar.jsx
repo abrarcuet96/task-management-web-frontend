@@ -22,26 +22,30 @@ const NavBar = () => {
                     Home
                 </NavLink>
             </li>
-            <li className="text-lg font-semibold">
-                <NavLink
-                    to="/register"
-                    className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
-                    }
-                >
-                    Register
-                </NavLink>
-            </li>
-            <li className="text-lg font-semibold">
-                <NavLink
-                    to="/login"
-                    className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
-                    }
-                >
-                    Login
-                </NavLink>
-            </li>
+            {
+                user ?
+                    <li className="text-lg font-semibold">
+                        <NavLink
+                            to="/dashboard"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
+                            }
+                        >
+                            Dashboard
+                        </NavLink>
+                    </li>
+                    : <li className="text-lg font-semibold">
+                        <NavLink
+                            to="/register"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
+                            }
+                        >
+                            Register
+                        </NavLink>
+                    </li>
+
+            }
         </>
     return (
         <SectionContainer>
@@ -75,14 +79,16 @@ const NavBar = () => {
                         user ?
                             <>
                                 <div className="flex flex-row">
-                                    <div className="bg-white mr-2 p-1 rounded-lg max-sm:hidden  w-full">
-                                        <span className="w-30 h-2 m-2 font-semibold">{user?.displayName}</span>
+                                    <div className=" max-sm:hidden">
+                                        <span className="m-2 text-sm font-semibold lg:text-lg bg-gradient-to-r from-green-300  to-purple-600 text-transparent bg-clip-text">{user?.displayName}</span>
 
                                     </div>
                                     <img className="w-8 h-8 mr-2 rounded-full" src={user?.photoURL} alt="" />
-                                    <Link to="/">
-                                        <button onClick={handleLogOut}><Link className="text-lg font-semibold text-blue-800 hover:border-b-4 hover:border-blue-800" to="/">LogOut</Link></button>
-                                    </Link>
+
+                                    <button onClick={handleLogOut}>
+                                        <Link className="text-sm font-semibold lg:text-lg bg-gradient-to-r from-green-300  to-purple-600 text-transparent bg-clip-text" to="/">LogOut</Link>
+                                    </button>
+
                                 </div>
                             </> :
                             <Link to="/login">

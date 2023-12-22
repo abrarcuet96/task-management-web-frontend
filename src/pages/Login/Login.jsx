@@ -5,17 +5,37 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { ImSpinner9 } from "react-icons/im";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 const Login = () => {
-    const navigate= useNavigate();
+    const navigate = useNavigate();
     const highlightText = {
         background: 'linear-gradient(to bottom, transparent 50%, #EA580C 50%)'
     }
     const { signIn, googleSignIn, loading, setLoading } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(res => {
                 console.log(res);
-                navigate('/');
+                const userInfo = {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    imageURL: res.user.photoURL
+                }
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "User Created Successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            setLoading(false);
+                        }
+                    })
+                navigate('/dashboard/userHome');
             })
             .catch(err => {
                 console.log(err);
@@ -41,6 +61,7 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate('/dashboard/userHome');
                 }
                 else {
                     Swal.fire({
