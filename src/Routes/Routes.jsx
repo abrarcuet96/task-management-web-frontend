@@ -8,6 +8,7 @@ import UserHome from "../pages/DashboardPages/UserHome/UserHome";
 import AddTask from "../pages/DashboardPages/AddTask/AddTask";
 import ToDo from "../pages/DashboardPages/ToDo/ToDo";
 import TaskEdit from "../pages/TaskEdit/TaskEdit";
+import About from "../pages/About/About";
 
 export const myCreatedRoutes= createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const myCreatedRoutes= createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'/about',
+                element: <About></About>
             }
         ]
     },

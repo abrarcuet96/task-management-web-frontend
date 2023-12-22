@@ -20,6 +20,7 @@ const TaskEdit = () => {
             taskDeadline: data.taskDeadline,
             taskPriority: data.taskPriority,
             userEmail: userData[0].email,
+            taskStatus: "todo"
         }
         const upTask = await axiosSecure.patch(`/tasks/${_id}`, taskDetails);
         if (upTask.data.modifiedCount > 0){

@@ -18,6 +18,7 @@ const AddTask = () => {
             taskDeadline: data.taskDeadline,
             taskPriority: data.taskPriority,
             userEmail: userData[0].email,
+            taskStatus: "todo"
         }
         axiosSecure.post('/tasks', taskDetails)
             .then(res => {
