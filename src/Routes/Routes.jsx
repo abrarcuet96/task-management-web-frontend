@@ -45,8 +45,9 @@ export const myCreatedRoutes= createBrowserRouter([
                 element: <ToDo></ToDo>
             },
             {
-                path:'taskEdit/:id',
-                element: <TaskEdit></TaskEdit>
+                path:'taskEdit/:email/:id',
+                element: <TaskEdit></TaskEdit>,
+                loader: ({ params }) => fetch(`http://localhost:5000/tasks/email/${params.id}`)
             },
         ]
     }

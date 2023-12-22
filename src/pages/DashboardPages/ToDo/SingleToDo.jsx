@@ -42,7 +42,7 @@ const SingleToDo = ({ item, index, refetch }) => {
                         <p><span className="font-semibold">Task Description:</span> {item.taskPriority}</p>
                         <div className="flex gap-4 justify-end">
                             <div className="card-actions justify-end">
-                                <Link to={`/dashboard/taskEdit/${item._id}`}>
+                                <Link to={`/dashboard/taskEdit/${item.userEmail}/${item._id}`}>
                                     <button><FiEdit3 className="text-xl text-blue-700" /></button>
                                 </Link>
                             </div>
