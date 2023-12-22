@@ -7,6 +7,7 @@ import Dashboard from "../layouts/Dashboard/Dashboard";
 import UserHome from "../pages/DashboardPages/UserHome/UserHome";
 import AddTask from "../pages/DashboardPages/AddTask/AddTask";
 import ToDo from "../pages/DashboardPages/ToDo/ToDo";
+import TaskEdit from "../pages/TaskEdit/TaskEdit";
 
 export const myCreatedRoutes= createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const myCreatedRoutes= createBrowserRouter([
             {
                 path:'toDo',
                 element: <ToDo></ToDo>
+            },
+            {
+                path:'taskEdit/:id',
+                element: <TaskEdit></TaskEdit>
             },
         ]
     }

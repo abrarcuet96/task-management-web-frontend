@@ -76,26 +76,6 @@ const Dashboard = () => {
                                                 To Do List
                                             </NavLink>
                                         </li>
-                                        <li className="text-lg font-semibold">
-                                            <NavLink
-                                                to="/dashboard/onGoing"
-                                                className={({ isActive, isPending }) =>
-                                                    isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
-                                                }
-                                            >
-                                                On Going Task
-                                            </NavLink>
-                                        </li>
-                                        <li className="text-lg font-semibold">
-                                            <NavLink
-                                                to="/dashboard/completed"
-                                                className={({ isActive, isPending }) =>
-                                                    isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
-                                                }
-                                            >
-                                                Completed Task
-                                            </NavLink>
-                                        </li>
                                     </>
 
                                 </div>

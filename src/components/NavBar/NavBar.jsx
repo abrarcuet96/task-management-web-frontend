@@ -26,7 +26,7 @@ const NavBar = () => {
                 user ?
                     <li className="text-lg font-semibold">
                         <NavLink
-                            to="/dashboard"
+                            to="/dashboard/userHome"
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? " bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 text-transparent bg-clip-text" : "text-slate-600"
                             }
